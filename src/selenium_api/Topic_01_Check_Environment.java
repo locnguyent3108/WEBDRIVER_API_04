@@ -61,7 +61,7 @@ public class Topic_01_Check_Environment {
 	@Test
 	public void TC_02_CheckURL() {
 		String homePageURL = driver.getCurrentUrl();
-		Assert.assertEquals("http://live.guru99.com", homePageURL);
+		Assert.assertEquals("http://live.guru99.com/", homePageURL);
 	}
   
 
