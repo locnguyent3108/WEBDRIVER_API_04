@@ -28,6 +28,7 @@ public class Topic_02_XpathCss {
 	public void beforeClass() {
 		// Firefox <=47 + selenium version 2.x.x
 		driver = new FirefoxDriver();
+		driver = new FirefoxDriver();
 
 		// Chrome
 		// System.setProperty("webdriver.chrome.driver",".\\driver\\chromedriver.exe");
@@ -44,7 +45,7 @@ public class Topic_02_XpathCss {
 		driver.manage().window().maximize();
 
 		// Open website
-		driver.get("http://live.guru99.com");
+		driver.get("http://live.guru9s.com");
 	}
 	public enum ErrorMessage {
 		ErrorMsg("This is a required field.","Please enter a valid email address. For example johndoe@domain.com.","Please enter 6 or more characters without leading or trailing spaces.");
