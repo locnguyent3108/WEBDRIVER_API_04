@@ -72,18 +72,12 @@ public class Topic_03_WebElement_ElementCommands {
 		WebElement interest = driver.findElement(By.xpath(".//input[@id='development']"));
 		WebElement slider01 = driver.findElement(By.xpath("//input[@id='slider-1']"));
 		WebElement btnEnabled = driver.findElement(By.xpath("//button[@id='button-enabled']"));
-		List<WebElement> checkEnable = new ArrayList<WebElement>();
-		checkEnable.add(email);
-		checkEnable.add(Age);
-		checkEnable.add(Education);
-		checkEnable.add(job);
-		checkEnable.add(interest);
-		checkEnable.add(slider01);
-		checkEnable.add(btnEnabled);
-		for(int i = 0 ; i < checkEnable.size() ; i++)
+		WebElement[] checkEnable = new WebElement[] {email,Age,Education,job,interest,slider01,btnEnabled};
+		for(int i = 0 ; i < checkEnable.length ; i++)
 		{
-			Assert.assertTrue(checkEnable.get(i).isEnabled());
+			Assert.assertTrue(checkEnable[i].isEnabled());
 		}
+		
 		WebElement pwd = driver.findElement(By.xpath("//input[@id='password']"));
 		WebElement rdBtn = driver.findElement(By.xpath("//input[@id='radio-disabled']"));
 		WebElement Bio = driver.findElement(By.xpath("//textarea[@id='bio']"));
@@ -91,17 +85,10 @@ public class Topic_03_WebElement_ElementCommands {
 		WebElement chckBox = driver.findElement(By.xpath(".//*[@id='check-disbaled']"));
 		WebElement slider02 = driver.findElement(By.xpath(".//*[@id='check-disbaled']"));
 		WebElement btnDisabled = driver.findElement(By.xpath(".//button[@id='button-disabled']"));
-		List<WebElement> checkDisable = new ArrayList<WebElement>();
-		checkDisable.add(pwd);
-		checkDisable.add(rdBtn);
-		checkDisable.add(Bio);
-		checkDisable.add(jbRole2);
-		checkDisable.add(chckBox);
-		checkDisable.add(slider02);
-		checkDisable.add(btnDisabled);
-		for(int i = 0 ; i < checkEnable.size() ; i++)
+		WebElement[] checkDisable = new WebElement[] {pwd,rdBtn,Bio,jbRole2,chckBox,slider02,btnDisabled};
+		for(int i = 0 ; i < checkEnable.length ; i++)
 		{
-			Assert.assertFalse(checkDisable.get(i).isEnabled());
+			Assert.assertFalse(checkDisable[i].isEnabled());
 		}
 	}
 	@Test
