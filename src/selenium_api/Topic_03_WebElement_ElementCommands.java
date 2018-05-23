@@ -104,6 +104,22 @@ public class Topic_03_WebElement_ElementCommands {
 			Assert.assertFalse(checkDisable.get(i).isEnabled());
 		}
 	}
+	@Test
+	public void TC_03_isSelected() {
+		WebElement ageUnder = driver.findElement(By.xpath("//input[@id='under_18']"));
+		WebElement Interest = driver.findElement(By.xpath(".//*[@id='development']"));
+		if(!ageUnder.isSelected()) {
+			ageUnder.click();
+			Assert.assertTrue(ageUnder.isSelected());
+
+		}else if (!Interest.isSelected()) {
+			Interest.click();
+			Assert.assertTrue(Interest.isSelected());
+
+		}
+		
+
+	}
   
 
 	@AfterClass
