@@ -72,23 +72,37 @@ public class Topic_03_WebElement_ElementCommands {
 		WebElement interest = driver.findElement(By.xpath(".//input[@id='development']"));
 		WebElement slider01 = driver.findElement(By.xpath("//input[@id='slider-1']"));
 		WebElement btnEnabled = driver.findElement(By.xpath("//button[@id='button-enabled']"));
-		List<WebElement> allAtribute = new ArrayList<WebElement>();
-		allAtribute.add(email);
-		allAtribute.add(Age);
-		allAtribute.add(Education);
-		allAtribute.add(job);
-		allAtribute.add(interest);
-		allAtribute.add(slider01);
-		allAtribute.add(btnEnabled);
-		for(int i = 0 ; i < allAtribute.size() ; i++)
+		List<WebElement> checkEnable = new ArrayList<WebElement>();
+		checkEnable.add(email);
+		checkEnable.add(Age);
+		checkEnable.add(Education);
+		checkEnable.add(job);
+		checkEnable.add(interest);
+		checkEnable.add(slider01);
+		checkEnable.add(btnEnabled);
+		for(int i = 0 ; i < checkEnable.size() ; i++)
 		{
-			WebElement temp = allAtribute.get(i);
-			Assert.assertTrue(temp.isEnabled());
-			if (i == 7) {
-				break;
-			}
+			Assert.assertTrue(checkEnable.get(i).isEnabled());
 		}
-		
+		WebElement pwd = driver.findElement(By.xpath("//input[@id='password']"));
+		WebElement rdBtn = driver.findElement(By.xpath("//input[@id='radio-disabled']"));
+		WebElement Bio = driver.findElement(By.xpath("//textarea[@id='bio']"));
+		WebElement jbRole2 = driver.findElement(By.xpath("//*[@id='job2']"));
+		WebElement chckBox = driver.findElement(By.xpath(".//*[@id='check-disbaled']"));
+		WebElement slider02 = driver.findElement(By.xpath(".//*[@id='check-disbaled']"));
+		WebElement btnDisabled = driver.findElement(By.xpath(".//button[@id='button-disabled']"));
+		List<WebElement> checkDisable = new ArrayList<WebElement>();
+		checkDisable.add(pwd);
+		checkDisable.add(rdBtn);
+		checkDisable.add(Bio);
+		checkDisable.add(jbRole2);
+		checkDisable.add(chckBox);
+		checkDisable.add(slider02);
+		checkDisable.add(btnDisabled);
+		for(int i = 0 ; i < checkEnable.size() ; i++)
+		{
+			Assert.assertFalse(checkDisable.get(i).isEnabled());
+		}
 	}
   
 
