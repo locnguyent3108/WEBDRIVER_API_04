@@ -28,7 +28,6 @@ public class Topic_02_XpathCss {
 	public void beforeClass() {
 		// Firefox <=47 + selenium version 2.x.x
 		driver = new FirefoxDriver();
-		driver = new FirefoxDriver();
 
 		// Chrome
 		// System.setProperty("webdriver.chrome.driver",".\\driver\\chromedriver.exe");

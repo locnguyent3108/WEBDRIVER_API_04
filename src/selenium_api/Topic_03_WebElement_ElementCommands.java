@@ -72,6 +72,7 @@ public class Topic_03_WebElement_ElementCommands {
 		WebElement interest = driver.findElement(By.xpath(".//input[@id='development']"));
 		WebElement slider01 = driver.findElement(By.xpath("//input[@id='slider-1']"));
 		WebElement btnEnabled = driver.findElement(By.xpath("//button[@id='button-enabled']"));
+		
 		WebElement[] checkEnable = new WebElement[] {email,Age,Education,job,interest,slider01,btnEnabled};
 		for(int i = 0 ; i < checkEnable.length ; i++)
 		{
@@ -99,10 +100,10 @@ public class Topic_03_WebElement_ElementCommands {
 			ageUnder.click();
 			Assert.assertTrue(ageUnder.isSelected());
 
-		}else if (!Interest.isSelected()) {
+		}else {
+		} if (!Interest.isSelected()) {
 			Interest.click();
 			Assert.assertTrue(Interest.isSelected());
-
 		}
 		
 
