@@ -1,6 +1,7 @@
 package selenium_api;
 
 import org.testng.annotations.AfterClass;
+
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 import org.testng.Assert;
@@ -14,12 +15,14 @@ import static org.junit.Assert.assertTrue;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterClass;
 import pageObjects.Topic04_form_demo;
+import pageObjects.Topic04_BankScreen;
 
 public class Topic_04_TEXTBOX {
 	// Khai bao 1 cai driver
@@ -40,13 +43,11 @@ public class Topic_04_TEXTBOX {
 		driver.manage().window().maximize();
 		
 		//open website
-		driver.get("http://daominhdam.890m.com/");
 		
 	}
-
-	
-	@Test 
+	@Test (enabled = false)
 	public void TC_01_Handle_Dropdown_list() {
+		driver.get("http://daominhdam.890m.com/");
 		Topic04_form_demo jobRole = new Topic04_form_demo(driver);
 		//Kiem tra thuoc tinh job role 01 co multiple ko ?
 		Assert.assertFalse(jobRole.jobRole01(driver).isMultiple());
@@ -72,13 +73,40 @@ public class Topic_04_TEXTBOX {
 		Assert.assertEquals(jobRole.jobRole01(driver).getOptions().size(), 5);
 	}
 	
-	
-	
-  
+	@Test
+	public void TC_02_Handle_textBox_textArea() {
+		driver.get("http://demo.guru99.com/v4");
+		// Create temporatory username
+		Topic04_BankScreen tempUser = new Topic04_BankScreen(driver);
+		tempUser.createUser(driver).click();
+		tempUser.emailID(driver).sendKeys("tester1@yopmail.com");
+		tempUser.btnSubmit(driver).click();
+		String tempUserID = tempUser.getUserId(driver).getText();
+		String tempPwd = tempUser.getPwd(driver).getText();
+		driver.navigate().to("http://demo.guru99.com/v4");
+		//Login w temporatory username vua tao
+		// mngr135218/gEdAqyt 
+		tempUser.lgnUser(driver,tempUserID,tempPwd);
+		tempUser.NwCustomer(driver);
+		//Add new Customer
+		String actual_result = tempUser.getCustomId(driver).getText();
+		driver.findElement(By.xpath("//a[text()='Edit Customer']")).click();
+		driver.findElement(By.xpath("//input[@name ='cusid']")).sendKeys(actual_result);
+		driver.findElement(By.xpath("//input[@name='AccSubmit']")).click();
+		WebElement actual_cusname = driver.findElement(By.xpath("//input[@name ='name']"));
+		WebElement actual_address = driver.findElement(By.xpath("//textarea[@name ='addr']"));
+		Assert.assertEquals("Loc Nguyen", actual_cusname.getAttribute("Value"));
+		Assert.assertEquals("Testing 123", actual_address.getText());
+		tempUser.editCity_Address(driver,actual_address);
+		WebElement newAddr = driver.findElement(By.xpath("//td[text()='Address']/following-sibling::td"));
+		WebElement newCity = driver.findElement(By.xpath("//td[text()='City']/following-sibling::td"));
 
+		Assert.assertEquals("new city", newCity.getText());
+		Assert.assertEquals("new address", newAddr.getText());
+	}
 	@AfterClass
 	public void afterClass() {
-		driver.quit();
+	//	driver.quit();
 	}
 	
 }	

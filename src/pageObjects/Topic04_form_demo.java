@@ -28,8 +28,9 @@ public class Topic04_form_demo {
 		this.driver = driver;
 	}
 	public  Select jobRole01(WebDriver driver) {
-		Select jobRole01 = new Select(driver.findElement(By.xpath("//select[@id='job1']")));
-		return jobRole01;
+		
+		Select a = new Select (driver.findElement(By.xpath("//select[@id='job1']")));
+		return a;
 	}	
 
 	public void selectByValue(Select element) {
