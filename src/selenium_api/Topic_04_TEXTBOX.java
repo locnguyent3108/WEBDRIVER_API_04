@@ -106,7 +106,7 @@ public class Topic_04_TEXTBOX {
 	}
 	@AfterClass
 	public void afterClass() {
-	//	driver.quit();
+		driver.quit();
 	}
 	
 }	
